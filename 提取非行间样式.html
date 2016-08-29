@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div { height: 200px;}
+        #div1{
+            height: 400px;
+            width: 400px;
+            background: aqua;
+        }
+    </style>
+    <script>
+        //在所有浏览器下都兼容写法。
+        function getStyle(obj,name)
+        {
+            if(obj.currentStyle)
+            {
+                //IE下
+                return(obj.currentStyle[name]);
+            }
+            else{
+                //chrome firefox
+                return(getComputedStyle(obj,false)[name]);
+            }
+
+        }
+
+
+        window.onload = function() {
+            var oDiv = document.getElementById('div1');
+
+            alert(getStyle(oDiv,'width'));
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+    </div>
+</body>
+</html>

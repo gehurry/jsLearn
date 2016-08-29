@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            background : rgba(70, 70, 70, 0.98);
+            width: 400px;
+            height: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #div1 ul{
+            height: 400px;
+            width: 300px;
+            padding-left: 0px;
+            padding-top: 25px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        #div1 ul li{
+            list-style-type: none;
+            float: left;
+            display: block;
+            text-align: center;
+            background: #b9b9b9;
+            height: 100px;
+            width: 100px;
+
+        }
+        #div1 .active{
+            background: #272727;
+            color: #ffffff;
+
+
+        }
+        #div1 div{
+            height: 190px;
+            width: 290px;
+            background: #b9b9b9;
+            margin-top: -10px;
+            margin-right: auto;
+            margin-left: auto;
+            padding-top: 1px;
+            padding-left: 10px;
+
+        }
+    </style>
+    <script>
+        window.onload = function()
+        {
+            var oDiv = document.getElementById('div1');
+            var aLi = oDiv.getElementsByTagName('li');
+            var aDiv = oDiv.getElementsByTagName('div')[0];
+            arr=['新年好','二月了，想好要开学了么','春天到了适合踏青','期中考试了，好好加油','五月了想好干吗了么？','期末考试了，准备好了么。','放暑假了，尽情享受','天气有点热别中暑了',
+            '9月开学快乐','国庆快乐','11月了，时间好快','圣诞快乐'];
+            for(var i = 0;i <aLi.length; i++)
+            {
+
+                aLi[i].onmouseover = function()
+                {
+                    for(var i = 0;i <aLi.length;i++)
+                    {
+                        aLi[i].index = i;
+                        aLi[i].className = '';
+                    }
+                    this.className = 'active';
+                    aDiv.innerHTML = '<h2>'+(this.index+1)+'月活动</h2><p>'+arr[this.index]+"</p>";
+
+
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+<div id="div1">
+    <ul>
+        <li><h2>1</h2><p>JAN</p></li>
+        <li><h2>2</h2><p>FEB</p></li>
+        <li><h2>3</h2><P>MAR</P></li>
+        <li><h2>4</h2><P>APR</P></li>
+        <li><h2>5</h2><P>MAY</P></li>
+        <li><h2>6</h2><P>JUN</P></li>
+        <li><h2>7</h2><P>JUL</P></li>
+        <li><h2>8</h2><P>AUG</P></li>
+        <li><h2>9</h2><P>SEP</P></li>
+        <li><h2>10</h2><P>OCT</P></li>
+        <li><h2>11</h2><P>NOV</P></li>
+        <li><h2>12</h2><P>DEC</P></li>
+    </ul>
+    <div>
+        <h2>1月</h2>
+        <p>这是新的一年</p>
+
+    </div>
+</div>
+</body>
+</html>

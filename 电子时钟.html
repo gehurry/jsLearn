@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background-color: black;
+        }
+        #div1{
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+    <script>
+        function Dou(num)
+        {
+            if(num<10)
+            {
+                return '0'+num;
+            }
+            else
+            {
+                return ''+num;
+            }
+
+        }
+
+
+        window.onload = function()
+        {
+            var oDiv = document.getElementById('div1');
+            var img = oDiv.getElementsByTagName('img');
+
+
+
+            function time(){
+                var str = '00.00.00';
+                var myDate = new Date();
+                str = Dou(myDate.getHours())+'p'+Dou(myDate.getMinutes())+'p'+Dou(myDate.getSeconds());
+                for(var i = 0;i<img.length;i++)
+                {
+                    img[i].src="timer/images/"+str[i]+".png";
+
+                }
+            }
+
+//
+            var start = setInterval(time,1000);
+
+            time();
+
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <img src="timer/images/1.png">
+    <img src="timer/images/2.png">
+
+    <img src="timer/images/p.png">
+
+
+    <img src="timer/images/0.png">
+    <img src="timer/images/3.png">
+
+    <img src="timer/images/p.png">
+
+    <img src="timer/images/3.png">
+    <img src="timer/images/0.png">
+</div>
+</body>
+</html>

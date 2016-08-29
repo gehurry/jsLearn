@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            setInterval(function(){
+                oDiv.style.left = oDiv.offsetLeft+10+'px';
+
+            },40)
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #div3{
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #div1{
+            position:relative;
+            left: 100px;
+            top: 200px;
+            height: 229px;
+            width: 1280px;
+            /*background: red;*/
+            overflow: hidden;
+        }
+        #div1 ul{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+        #div1 ul li{
+            float: left;
+            height: 229px;
+            width: 320px;
+            list-style: none;
+
+        }
+    </style>
+    <script>
+        window.onload = function()
+        {
+            var oDiv = document.getElementById('div1');
+            var oUl = oDiv.getElementsByTagName('ul')[0];
+            var aLi = oUl.getElementsByTagName('li');
+            oUl.innerHTML = oUl.innerHTML +oUl.innerHTML;
+
+            var y = 2;
+            var start =null;
+
+            oUl.style.width = aLi[0].offsetWidth*aLi.length+'px'
+            start = setInterval(function(){
+
+                oUl.style.left = oUl.offsetLeft+y+'px';
+
+                if(oUl.offsetLeft< -oUl.offsetWidth/2)
+                {
+                    oUl.style.left = '0';
+                }
+                if(oUl.offsetLeft>0)
+                {
+                    oUl.style.left = -oUl.offsetWidth/2+'px';
+                }
+
+            },40);
+
+            document.getElementsByTagName('input')[0].onclick= function(){
+                y=-2;
+            }
+            document.getElementsByTagName('input')[1].onclick= function(){
+            y=2;
+        }
+        }
+    </script>
+</head>
+<body>
+    <div id="div3">
+        <input type="button" value="向左">
+        <input type="button" value="向右">
+
+    </div>
+<div id = 'div1'>
+
+    <ul>
+        <li><img src="move/2.png"/></li>
+        <li><img src="move/1.png"/></li>
+        <li><img src="move/3.png"/></li>
+        <li><img src="move/4.png"/></li>
+    </ul>
+</div>
+
+</body>
+</html>
