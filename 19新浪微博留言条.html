@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #ul1{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+
+        #ul1 li{
+            border-bottom: 1px #666666 dashed;
+            padding: 4px;
+            list-style-type:none;
+            overflow: hidden;
+            filter: alpha(opacity:0);
+            opacity: 0;
+
+        }
+
+    </style>
+    <script src = "move.js"></script>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn1');
+            var oUl = document.getElementById('ul1');
+            var oTxt = document.getElementById('txt1');
+
+            oBtn.onclick = function()
+            {
+                var oLi  = document.createElement('li');
+                oLi.innerHTML = oTxt.value;
+                oTxt.value = '';
+
+                if(oUl.children.length>0){
+                    oUl.insertBefore(oLi,oUl.children[0]);
+                }
+                else{
+                 oUl.appendChild(oLi);
+                }
+
+
+                //运动：
+                var iHight = oLi.offsetHeight;
+                oLi.style.height = '0';   //初始化li的高度opx；
+                charge(oLi, {height:iHight},function(){
+                    charge(oLi, {opacity: 100});
+                });
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+<textarea id="txt1" rows = "4" cols="40"></textarea>
+<input  id="btn1" type="button" value="发布">
+<ul id="ul1">
+
+</ul>
+
+</body>
+</html>

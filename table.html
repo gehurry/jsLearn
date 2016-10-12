@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function()
+        {
+            var oTab = document.getElementById('table');
+            var oldColor;
+
+            var oBtn = document.getElementById('btn1');
+            var oName = document.getElementById('name');
+            var oAge = document.getElementById('age');
+            var oId = oTab.tBodies[0].rows.length+1;
+
+
+            //搜索部分
+            var oText = document.getElementById('text1');
+            var oBtn2 = document.getElementById('btn2');
+
+
+            //排序部分
+            var oBtn3 = document.getElementById('btn3');
+
+            oBtn3.onclick = function()
+            {
+                var arr = [];
+                for(var i = 0 ;i<oTab.tBodies[0].rows.length;i++)
+                {
+                    arr[i] = oTab.tBodies[0].rows[i];
+                }
+
+                arr.sort(function(tr1,tr2) {
+                    var n1 =parseInt(tr1.cells[0].innerHTML);
+                    var n2 =parseInt(tr2.cells[0].innerHTML);
+
+                    return n2-n1;
+                });
+                for(var i = 0 ;i<arr.length;i++)
+                {
+                    oTab.tBodies[0].appendChild(arr[i]);
+                }
+
+
+            };
+
+
+
+
+
+            oBtn2.onclick = function()
+            {
+
+                for(var i = 0;i<oTab.tBodies[0].rows.length;i++) {
+                    var sTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+                    var sTxt = oText.value.toLowerCase();
+
+                    var arr = sTxt.split(' ');
+
+                    oTab.tBodies[0].rows[i].style.background = " ";
+                    for (var j = 0; j < arr.length; j++) {
+                        if (sTab.search(arr[j]) != -1)
+                           oTab.tBodies[0].rows[i].style.background = 'red';
+                    }
+
+                }
+            }
+
+
+
+            for(var i =0;i<oTab.tBodies[0].rows.length;i++)
+            {
+                oBtn.onclick = function()
+                {
+                    var oTr = document.createElement('tr');
+
+                    var oTd = document.createElement('td');
+                    oTd.innerHTML = oId++;  //
+                    oTr.appendChild(oTd);
+
+                    var oTd = document.createElement('td');
+                    oTd.innerHTML =oName.value;  //
+                    oTr.appendChild(oTd);
+
+                    var oTd = document.createElement('td');
+                    oTd.innerHTML =oName.value;  //
+                    oTr.appendChild(oTd);
+
+                    var oTd = document.createElement('td');
+                    oTd.innerHTML ='<a href="javascript:;">删除</a>';  //
+                    oTr.appendChild(oTd);
+
+                    oTd.getElementsByTagName('a')[0].onclick = function()
+                    {
+                        oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+                    }
+
+
+
+                    oTab.tBodies[0].appendChild(oTr);
+                }
+
+
+                oTab.tBodies[0].rows[i].onmouseover = function()
+                {
+                    oldColor = this.style.background;
+                    this.style.background = 'red';
+                }
+                oTab.tBodies[0].rows[i].onmouseout = function()
+                {
+                    this.style.background = oldColor;
+                }
+
+                if(i%2==0)
+                {
+                    oTab.tBodies[0].rows[i].style.background='#CCC';
+                }
+                else
+                {
+                    oTab.tBodies[0].rows[i].style.background='';
+                }
+
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+
+姓名：<input id="name" type="text"/>
+年龄：<input id="age" type="text"/>
+<input id="btn1" type="button" value="添加"/>
+
+
+输入搜索姓名：<input id="text1" type="text"/>
+<input  id="btn2" type="button" value="搜索"/>
+<br/>
+<input id="btn3" type="button" value="排序"/>
+
+<table  id="table" border="1" width="400">
+    <thead>
+        <td>ID</td>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td>4</td>
+            <td>孙金凯</td>
+            <td>33</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>5</td>
+            <td>石凯</td>
+            <td>22</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>蒋金晟</td>
+            <td>23</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>7</td>
+            <td>葛海东</td>
+            <td>18</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>刘垚</td>
+            <td>18</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>孙金凯</td>
+            <td>33</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>7</td>
+            <td>sk</td>
+            <td>22</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>9</td>
+            <td>蒋金晟</td>
+            <td>23</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>10</td>
+            <td>葛海东</td>
+            <td>18</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>刘垚</td>
+            <td>18</td>
+            <td></td>
+        </tr>
+
+    </tbody>
+</table>
+</body>
+</html>
